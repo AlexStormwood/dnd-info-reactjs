@@ -3,6 +3,8 @@ import { Link, Route } from "react-router-dom";
 import DiceRollManager from './components/diceRoll';
 import ClassInfo from './components/classInfo';
 import HomePage from './components/homepage';
+import DungeonMasterManager from './components/dungeonMaster';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
           <li>
             <Link to="/classinfo">Character Classes</Link>
           </li>
+          <li>
+            <Link to="/dungeonmaster">DM Planning Area</Link>
+          </li>
         </ul>
       </nav>
 
@@ -26,6 +31,8 @@ function App() {
       <Route exact path="/"><HomePage /> </Route>
       <Route path="/diceroll"><DiceRollManager /> </Route>
       <Route path="/classinfo"><ClassInfo /> </Route>
+      <ProtectedRoute component={DungeonMasterManager} path="/dungeonmaster" />
+      {/* <Route path="/dungeonmaster"><DungeonMasterManager isDungeonMaster="false" /></Route> */}
     </div>
   );
 }
